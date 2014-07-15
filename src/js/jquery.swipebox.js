@@ -103,12 +103,16 @@
 					$elem.each( function() {
 
 						var title = null,
+							description = null,
 							href = null;
 						
 						if ( $( this ).attr( 'title' ) ) {
 							title = $( this ).attr( 'title' );
 						}
-							
+
+						if ( $( this ).attr( 'data-description' ) ) {
+							description = $( this ).attr( 'data-description' );
+						}
 
 						if ( $( this ).attr( 'href' ) ) {
 							href = $( this ).attr( 'href' );
@@ -116,7 +120,8 @@
 							
 						elements.push( {
 							href: href,
-							title: title
+							title: title,
+							description: description
 						} );
 					} );
 
@@ -619,19 +624,30 @@
 			},
 
 			/**
-			 * Set link title attribute as caption
+			 * Set link title attribute as caption, and description if provided via data-description
 			 */
 			setTitle : function ( index ) {
 				var title = null;
 
-				$( '#swipebox-caption' ).empty();
+				var $caption = $( '#swipebox-caption' );
+
+				$caption.empty();
 
 				if ( elements[index] !== undefined ) {
 					title = elements[index].title;
+					description = elements[index].description;
 				}
 
 				if ( title ) {
-					$( '#swipebox-caption' ).append( title );
+					$caption.append( title );
+				}
+
+				if ( description ) {
+					var $desc = $('<span class="swipebox-caption-description">'+description+'</span>');
+					$caption.addClass('has-description');
+					$caption.append($desc);
+				} else {
+					$caption.removeClass('has-description');
 				}
 			},
 
