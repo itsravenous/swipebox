@@ -15,9 +15,6 @@ html.swipebox-html.swipebox-touch {
   left: 0;
   z-index: 99999 !important;
   overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -88,11 +85,21 @@ html.swipebox-html.swipebox-touch {
   height: 50px;
   width: 100%;
 }
+#swipebox-caption.has-description {
+  height: 70px;
+}
+#swipebox-caption .swipebox-caption-description {
+  display: block;
+  margin-top: -20px;
+  color: #ececec;
+  font-size: 80%;
+}
 
 #swipebox-action {
   bottom: -50px;
 }
 #swipebox-action.visible-bars {
+  -moz-transform: translateY(-50px);
   -ms-transform: translateY(-50px);
   -webkit-transform: translateY(-50px);
   transform: translateY(-50px);
@@ -131,34 +138,28 @@ html.swipebox-html.swipebox-touch {
   top: -50px;
   text-align: center;
 }
+#swipebox-caption.has-description {
+  top: -70px;
+}
 #swipebox-caption.visible-bars {
+  -moz-transform: translateY(50px);
   -ms-transform: translateY(50px);
   -webkit-transform: translateY(50px);
   transform: translateY(50px);
 }
+#swipebox-caption.has-description.visible-bars {
+  -moz-transform: translateY(70px);
+  -ms-transform: translateY(70px);
+  -webkit-transform: translateY(70px);
+  transform: translateY(70px);
+}
 
 #swipebox-slider.rightSpring {
-  -webkit-animation: rightSpring 0.3s;
   animation: rightSpring 0.3s;
 }
 
 #swipebox-slider.leftSpring {
-  -webkit-animation: leftSpring 0.3s;
   animation: leftSpring 0.3s;
-}
-
-@-webkit-keyframes rightSpring {
-  0% {
-    margin-left: 0px;
-  }
-
-  50% {
-    margin-left: -30px;
-  }
-
-  100% {
-    margin-left: 0px;
-  }
 }
 
 @keyframes rightSpring {
@@ -174,19 +175,7 @@ html.swipebox-html.swipebox-touch {
     margin-left: 0px;
   }
 }
-@-webkit-keyframes leftSpring {
-  0% {
-    margin-left: 0px;
-  }
 
-  50% {
-    margin-left: 30px;
-  }
-
-  100% {
-    margin-left: 0px;
-  }
-}
 @keyframes leftSpring {
   0% {
     margin-left: 0px;
@@ -200,6 +189,7 @@ html.swipebox-html.swipebox-touch {
     margin-left: 0px;
   }
 }
+
 @media screen and (max-width: 800px) {
   #swipebox-action #swipebox-close {
     left: 0;
@@ -226,6 +216,8 @@ html.swipebox-html.swipebox-touch {
   background-color: #0d0d0d;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#0d0d0d), to(black));
   background-image: -webkit-linear-gradient(top, #0d0d0d, black);
+  background-image: -moz-linear-gradient(top, #0d0d0d, black);
+  background-image: -o-linear-gradient(top, #0d0d0d, black);
   background-image: linear-gradient(to bottom, #0d0d0d, black);
   opacity: 0.95;
 }
